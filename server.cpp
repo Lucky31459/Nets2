@@ -39,7 +39,7 @@ int main(){
     int server_port = 8080 ;
     int k = 10 ;
     int p = 2 ;
-    string input_file = "./testcase.txt" ;
+    // string input_file = "./testcase.txt" ;
     int num_clients = 1 ;
 
     //Initialising a server socket (Node)
@@ -76,7 +76,7 @@ int main(){
          return 0 ;
     }
     // cout<<num<<endl;
-    std::ifstream infile(input_file);  
+    std::ifstream infile("./testcase.txt");  
     std::string line;
     int word_count = 0;
     string mystr = "";
