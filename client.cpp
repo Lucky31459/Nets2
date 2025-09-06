@@ -11,7 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-
+#include <cstdlib> 
 using namespace std ;
 
 int main(){
@@ -58,7 +58,7 @@ int main(){
           count = 0 ;
           int new_off = off + k ;
           off = new_off ;
-          string new_offset = to_string(new_off)+"\n";
+          string new_offset = std::to_string(new_off)+"\n";
           send(sock, new_offset.c_str() , strlen(new_offset.c_str()), 0);
         }  
       }
