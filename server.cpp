@@ -39,7 +39,7 @@ int main(){
     int server_port = 8080 ;
     int k = 10 ;
     int p = 2 ;
-    // string input_file = "./testcase.txt" ;
+    // string input_file = "./input_543.txt" ;
     int num_clients = 1 ;
 
     //Initialising a server socket (Node)
