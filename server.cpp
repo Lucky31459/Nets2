@@ -10,6 +10,7 @@
 #include <cctype>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
 
 // #include <stringstream>
 
