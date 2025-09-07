@@ -107,8 +107,9 @@ int main(){
     int new_socket = accept(srvr, (struct sockaddr *)&caddress, (socklen_t *)&caddrlen);
     cout<<"new_socket:"<<new_socket<<" "<<"S108"<<endl;
     //Connected
+    
     read(new_socket, buffer, 1024);
-  
+    cout<<"S112"<<endl;
     // cout<<buffer<<endl;
     int num = atoi((buffer));
     // cout<<num<<endl;
