@@ -17,31 +17,31 @@
 using namespace std ;
 
 int main(){
-    // std::ifstream file("config.json");
+    std::ifstream file("config.json");
     // if(!file.is_open()){
     //     cout<<"Could not open the file!"<<endl;
     //     return 0;
     // }
   
     char buffer[1024] = {0};
-    // nlohmann::json j;
-    // file >> j;
+    nlohmann::json j;
+    file >> j;
 
-    // string server_ip = 	j["server_ip"] ;
-    // int server_port = j["server_port"] ;
-    // int k = j["k"] ;
-    // int p = j["p"] ;
-    // string input_file = j["input_file"] ;
-    // int num_clients = j["num_clients"] ;
+    string server_ip = 	j["server_ip"] ;
+    int server_port = j["server_port"] ;
+    int k = j["k"] ;
+    int p = j["p"] ;
+    string input_file = j["input_file"] ;
+    int num_clients = j["num_clients"] ;
     
     //SET
 
-    const char* server_ip = 	"127.0.0.1" ;
-    int server_port = 8080 ;
-    int k = 10 ;
-    int p = 2 ;
-    // string input_file = "./input_543.txt" ;
-    int num_clients = 1 ;
+    // const char* server_ip = 	"127.0.0.1" ;
+    // int server_port = 8080 ;
+    // int k = 10 ;
+    // int p = 2 ;
+    string input_file = "./input_543.txt" ;
+    // int num_clients = 1 ;
 
     //Initialising a server socket (Node)
   
