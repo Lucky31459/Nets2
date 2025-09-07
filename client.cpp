@@ -83,7 +83,9 @@ int main(){
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
    cout<<"C85"<<"con: "<<con<<endl;
-   cout<<serv_addr<<endl;
+   printf("Connecting to %s:%d\n",
+       inet_ntoa(serv_addr.sin_addr),   // IP address in dotted form
+       ntohs(serv_addr.sin_port));      // Port in host byte order
     
    const char* offset = std::to_string(off).c_str();
    int sn  = send(sock, offset , strlen(offset), 0);
