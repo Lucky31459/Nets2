@@ -80,7 +80,9 @@ int main(){
    serv_addr.sin_port = htons(8080);
    inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
   //  cout<<"yo"<<endl;
-   connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
+
+   int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
+   cout<<con<<endl;
   //  cout<<"yo"<<endl;
     
    const char* offset = std::to_string(off).c_str();
@@ -92,8 +94,10 @@ int main(){
    cout<<"yo"<<endl;
    int count = 0 ;
    while(!check){
-      cout<<"yo"<<endl;
-       cout<<count<<endl;
+      if ( count > 100){
+          break ;
+          cout<<count<<"Hi"<<endl;
+      }
       recv(sock, buffer, sizeof(buffer), 0);
       std::stringstream ss(buffer);
       if(buffer == "$$"){
@@ -101,6 +105,10 @@ int main(){
         return 0 ;
       }
       while (std::getline(ss, word, ',')){
+        if ( count > 100){
+          break ;
+          cout<<count<<"Hi2"<<endl;
+        }
         cout<<word<<endl;
    
         if(word == "EOF"){
