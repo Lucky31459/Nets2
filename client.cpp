@@ -77,7 +77,7 @@ int main(){
 
    sock = socket(AF_INET, SOCK_STREAM, 0);
    serv_addr.sin_family = AF_INET;
-   serv_addr.sin_port = htons(8080);
+   serv_addr.sin_port = htons(server_port);
    inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
   //  cout<<"yo"<<endl;
 
