@@ -98,7 +98,7 @@ int main(){
        iter++;
        // cout<<iter<<endl;
       
-      if ( count > 100 || iter > 100){
+      if ( count > 100 || iter > 1){
           break ;
           cout<<count<<"Hi"<<endl;
       }
