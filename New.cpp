@@ -49,7 +49,7 @@ int safe_stoi(const std::string& s, int default_val=0) {
 }
 
 int main() {
-    std::map<std::string,std::string> config = parse_json("config.json");
+    std::map<std::string,std::string> config = parse_json("config_1.json");
 
     // Print all key-value pairs
     for (std::map<std::string,std::string>::iterator it=config.begin(); it!=config.end(); ++it)
