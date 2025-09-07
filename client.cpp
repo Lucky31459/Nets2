@@ -64,7 +64,7 @@ int main(){
 
    char buffer[1024] = {0};
   
-   std::map<std::string,std::string> config = parse_json("config_1.json");
+   std::map<std::string,std::string> config = parse_json("config.json");
    std::string server_ip = config["server_ip"];
    int server_port = safe_stoi(config["server_port"], 8080);
     
