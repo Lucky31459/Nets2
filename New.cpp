@@ -3,7 +3,9 @@
 #include <string>
 #include <map>
 #include <algorithm>
+#include <cctype>
 
+// Parse a flat JSON file into a map
 std::map<std::string, std::string> parse_json(const char* filename) {
     std::ifstream file(filename);
     std::map<std::string, std::string> result;
@@ -16,7 +18,6 @@ std::map<std::string, std::string> parse_json(const char* filename) {
         if (line.empty() || line[0] == '{' || line[0] == '}')
             continue;
 
-        // Split on ':'
         size_t colon = line.find(':');
         if (colon == std::string::npos) continue;
 
@@ -34,6 +35,15 @@ std::map<std::string, std::string> parse_json(const char* filename) {
     return result;
 }
 
+// Remove all non-digit characters except '-' for negative numbers
+std::string clean_number(const std::string& s) {
+    std::string res;
+    for (char c : s) {
+        if (isdigit(c) || c == '-' || c == '+') res += c;
+    }
+    return res;
+}
+
 int main() {
     std::map<std::string, std::string> config = parse_json("config.json");
 
@@ -42,13 +52,13 @@ int main() {
         std::cout << it->first << " = " << it->second << "\n";
     }
 
-    // Example: Access specific values
+    // Safely convert numeric values
     std::string server_ip = config["server_ip"];
-    int server_port = std::stoi(config["server_port"]);
-    int k = std::stoi(config["k"]);
-    int p = std::stoi(config["p"]);
+    int server_port = std::stoi(clean_number(config["server_port"]));
+    int k = std::stoi(clean_number(config["k"]));
+    int p = std::stoi(clean_number(config["p"]));
     std::string input_file = config["input_file"];
-    int num_clients = std::stoi(config["num_clients"]);
+    int num_clients = std::stoi(clean_number(config["num_clients"]));
 
     std::cout << "\nServer IP: " << server_ip << "\n";
     std::cout << "Server Port: " << server_port << "\n";
