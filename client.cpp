@@ -79,7 +79,7 @@ int main(){
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_port = htons(server_port);
    inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
-  //  cout<<"yo"<<endl;
+   cout<<"sock :"<<sock<<endl;
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
    cout<<con<<endl;
