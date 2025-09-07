@@ -39,6 +39,7 @@ int main(){
    int count = 0 ;
    while(!check){
       cout<<"yo"<<endl;
+       cout<<count<<endl;
       recv(sock, buffer, sizeof(buffer), 0);
       std::stringstream ss(buffer);
       if(buffer == "$$"){
