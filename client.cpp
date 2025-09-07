@@ -83,7 +83,7 @@ int main(){
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
    cout<<"C85"<<"con: "<<con<<endl;
-  //  cout<<"yo"<<endl;
+   cout<<"serv_addr<<endl;
     
    const char* offset = std::to_string(off).c_str();
    int sn  = send(sock, offset , strlen(offset), 0);
