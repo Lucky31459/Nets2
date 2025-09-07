@@ -79,10 +79,10 @@ int main(){
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_port = htons(server_port);
    inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
-   cout<<C82<<" "<<"sock :"<<sock<<endl;
+   cout<<"C82"<<" "<<"sock :"<<sock<<endl;
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
-   cout<<C85<<"con: "<<con<<endl;
+   cout<<"C85"<<"con: "<<con<<endl;
   //  cout<<"yo"<<endl;
     
    const char* offset = std::to_string(off).c_str();
@@ -94,7 +94,7 @@ int main(){
  
    int count = 0 ;
    while(!check){
-      cout<<C97<<"count: "<<count<<endl; 
+      cout<<"C97"<<"count: "<<count<<endl; 
       if ( count > 100){
           break ;
           cout<<count<<"Hi"<<endl;
