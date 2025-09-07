@@ -103,6 +103,7 @@ int main(){
           cout<<count<<"Hi"<<endl;
       }
       recv(sock, buffer, sizeof(buffer), 0);
+      cout<<buffer<<endl;
       std::stringstream ss(buffer);
       if(buffer == "$$"){
         cout<<"yo"<<endl;
