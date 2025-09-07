@@ -65,12 +65,12 @@ int main() {
     int p = safe_stoi(config["p"], 2);
     int num_clients = safe_stoi(config["num_clients"], 1);
 
-    std::cout << "\nServer IP: " << server_ip << "\n";
-    std::cout << "Server Port: " << server_port << "\n";
-    std::cout << "k: " << k << "\n";
-    std::cout << "p: " << p << "\n";
-    std::cout << "Input File: " << input_file << "\n";
-    std::cout << "Num Clients: " << num_clients << "\n";
+    // std::cout << "\nServer IP: " << server_ip << "\n";
+    // std::cout << "Server Port: " << server_port << "\n";
+    // std::cout << "k: " << k << "\n";
+    // std::cout << "p: " << p << "\n";
+    // std::cout << "Input File: " << input_file << "\n";
+    // std::cout << "Num Clients: " << num_clients << "\n";
 
     return 0;
 }
