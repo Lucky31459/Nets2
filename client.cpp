@@ -82,6 +82,7 @@ int main(){
    cout<<"C82"<<" "<<"sock, ipt :"<<sock<<","<<ipt<<endl;
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
+   cout<<server_port<<endl;
    cout<<"C85"<<"con: "<<con<<endl;
    printf("Connecting to %s:%d\n",
        inet_ntoa(serv_addr.sin_addr),   // IP address in dotted form
