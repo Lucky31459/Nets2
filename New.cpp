@@ -5,35 +5,43 @@
 #include <map>
 #include <algorithm>
 
-std::map<std::string, std::string> parse_json(const std::string &filename) {
+// Simple JSON parser for key-value pairs (strings and numbers only)
+std::map<std::string, std::string> parse_json(const char* filename) {
     std::ifstream file(filename);
     std::map<std::string, std::string> result;
-    std::string line;
 
-    while (std::getline(file, line)) {
-        // remove spaces
-        line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
+    if (!file.is_open()) {
+        std::cerr << "Error: Cannot open file " << filename << "\n";
+        return result;
+    }
 
-        if (line.empty() || line[0] == '{' || line[0] == '}')
-            continue;
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    std::string content = buffer.str();
 
-        // split by ':'
-        size_t colon = line.find(':');
-        if (colon == std::string::npos) continue;
+    // Remove spaces, newlines, braces
+    content.erase(std::remove_if(content.begin(), content.end(),
+                                 [](unsigned char c) { return std::isspace(c); }),
+                  content.end());
+    if (!content.empty() && content.front() == '{') content.erase(content.begin());
+    if (!content.empty() && content.back() == '}') content.pop_back();
 
-        std::string key = line.substr(0, colon);
-        std::string value = line.substr(colon + 1);
+    // Split on commas
+    std::stringstream ss(content);
+    std::string pair;
+    while (std::getline(ss, pair, ',')) {
+        auto colon_pos = pair.find(':');
+        if (colon_pos == std::string::npos) continue;
 
-        // remove quotes and commas
-        auto clean = [](std::string s) {
-            if (!s.empty() && s.front() == '"') s.erase(0, 1);
-            if (!s.empty() && s.back() == '"') s.pop_back();
-            if (!s.empty() && s.back() == ',') s.pop_back();
-            return s;
-        };
+        std::string key = pair.substr(0, colon_pos);
+        std::string value = pair.substr(colon_pos + 1);
 
-        key = clean(key);
-        value = clean(value);
+        // Remove quotes from key
+        key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
+
+        // Remove quotes from value if present
+        if (!value.empty() && value.front() == '\"') value.erase(value.begin());
+        if (!value.empty() && value.back() == '\"') value.pop_back();
 
         result[key] = value;
     }
@@ -44,12 +52,17 @@ std::map<std::string, std::string> parse_json(const std::string &filename) {
 int main() {
     auto config = parse_json("config.json");
 
-    std::cout << "server_ip = " << config["server_ip"] << "\n";
-    std::cout << "server_port = " << config["server_port"] << "\n";
-    std::cout << "k = " << config["k"] << "\n";
-    std::cout << "p = " << config["p"] << "\n";
-    std::cout << "input_file = " << config["input_file"] << "\n";
-    std::cout << "num_clients = " << config["num_clients"] << "\n";
+    for (const auto& [key, value] : config) {
+        std::cout << key << " = " << value << "\n";
+    }
 
-    return 0;
+    // Example: access values
+    if (config.find("server_ip") != config.end()) {
+        std::string ip = config["server_ip"];
+        std::cout << "Server IP: " << ip << "\n";
+    }
+    if (config.find("server_port") != config.end()) {
+        int port = std::stoi(config["server_port"]);
+        std::cout << "Server Port: " << port << "\n";
+    }
 }
