@@ -112,7 +112,7 @@ int main(){
     cout<<"S112"<<endl;
     // cout<<buffer<<endl;
     int num = atoi((buffer));
-    // cout<<num<<endl;
+    cout<<num<<endl;
     if( num % k != 0 ){
          cout<<"yo"<<endl;
          return 0 ;
@@ -139,6 +139,7 @@ int main(){
                 mystr = "";
                 read(new_socket, buffer, 1024);
                 num = atoi(buffer);
+                cout<<num<<endl;
                 if( num % k != 0 ){
                     cout<<"yo"<<endl;
                     return 0 ;
