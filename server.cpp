@@ -22,7 +22,7 @@ int main(){
     //     cout<<"Could not open the file!"<<endl;
     //     return 0;
     // }
-    cout<<"Could 1<<endl;
+    cout<<"Could 1"<<endl;
     char buffer[1024] = {0};
     // nlohmann::json j;
     // file >> j;
@@ -44,7 +44,7 @@ int main(){
     int num_clients = 1 ;
 
     //Initialising a server socket (Node)
-    cout<<"Could 2<<endl;
+    cout<<"Could 2"<<endl;
     int srvr = socket(AF_INET, SOCK_STREAM, 0);
                 //IPv4(/IPv6) , TCP(/UDP) , TCP default protocol
     
