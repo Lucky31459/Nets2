@@ -83,7 +83,7 @@ int main(){
    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
   //  cout<<"yo"<<endl;
 
-   send(sock, off.c_str() , strlen(off.c_str()), 0);
+   send(sock, off , strlen(off), 0);
 
    bool check = false ;
    std::map<std::string, int> word_freq;
