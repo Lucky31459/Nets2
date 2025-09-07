@@ -103,8 +103,9 @@ int main(){
 
     struct sockaddr_in caddress;
     socklen_t caddrlen = sizeof(caddress); 
+    cout<<S105<<endl;
     int new_socket = accept(srvr, (struct sockaddr *)&caddress, (socklen_t *)&caddrlen);
- 
+    cout<<"new_socket:"<<new_socket<<" "<<S108<<endl;
     //Connected
     read(new_socket, buffer, 1024);
   
