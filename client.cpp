@@ -62,23 +62,28 @@ int safe_stoi(const std::string& s, int default_val=0) {
 
 int main(){
 
-   std::ifstream file("config.json");
-   string offset = "10\n" ;
-   int k = 10 ;
-   int off = atoi(offset.c_str());
-   int sock;
    char buffer[1024] = {0};
+  
+   std::map<std::string,std::string> config = parse_json("config_1.json");
+   std::string server_ip = config["server_ip"];
+   int server_port = safe_stoi(config["server_port"], 8080);
+    
+   int off = safe_stoi(config["p"], 2);
+   int k = safe_stoi(config["k"], 10);
+    
+   int sock;
+   
    struct sockaddr_in serv_addr;
 
    sock = socket(AF_INET, SOCK_STREAM, 0);
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_port = htons(8080);
-   inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+   inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
   //  cout<<"yo"<<endl;
    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
   //  cout<<"yo"<<endl;
 
-   send(sock, offset.c_str() , strlen(offset.c_str()), 0);
+   send(sock, off.c_str() , strlen(off.c_str()), 0);
 
    bool check = false ;
    std::map<std::string, int> word_freq;
