@@ -93,9 +93,11 @@ int main(){
    std::string line, word;
  
    int count = 0 ;
+   int iter = 0;
    while(!check){
-      cout<<"C97"<<"count: "<<count<<endl; 
-      if ( count > 100){
+       iter++;
+       
+      if ( count > 100 || iter >100){
           break ;
           cout<<count<<"Hi"<<endl;
       }
