@@ -5,15 +5,15 @@
 #include <algorithm>
 #include <cctype>
 
-// Parse flat JSON file into a map
 std::map<std::string, std::string> parse_json(const char* filename) {
     std::ifstream file(filename);
     std::map<std::string, std::string> result;
     std::string line;
 
     while (std::getline(file, line)) {
-        // Remove spaces
-        line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
+        // Remove spaces at start/end
+        line.erase(0, line.find_first_not_of(" \t\n\r"));
+        line.erase(line.find_last_not_of(" \t\n\r") + 1);
 
         if (line.empty() || line[0]=='{' || line[0]=='}') continue;
 
@@ -23,22 +23,20 @@ std::map<std::string, std::string> parse_json(const char* filename) {
         std::string key = line.substr(0, colon);
         std::string value = line.substr(colon+1);
 
-        // Remove quotes from key
-        key.erase(std::remove(key.begin(), key.end(), '\"'), key.end());
+        // Remove quotes and spaces around key
+        key.erase(0, key.find_first_not_of(" \""));
+        key.erase(key.find_last_not_of(" \"") + 1);
 
-        // Remove quotes from value if present (keep characters for strings like IP or file paths)
-        if (!value.empty() && value.front()=='\"') value.erase(value.begin());
-        if (!value.empty() && value.back()=='\"') value.pop_back();
-
-        // Remove trailing comma
-        if (!value.empty() && value.back()==',') value.pop_back();
+        // Remove quotes and spaces around value
+        value.erase(0, value.find_first_not_of(" \""));
+        value.erase(value.find_last_not_of(" \",") + 1); // also remove trailing comma
 
         result[key] = value;
     }
     return result;
 }
 
-// Safe integer conversion
+// Safe stoi for numeric values
 int safe_stoi(const std::string& s, int default_val=0) {
     try {
         std::string t;
@@ -57,11 +55,11 @@ int main() {
     for (std::map<std::string,std::string>::iterator it=config.begin(); it!=config.end(); ++it)
         std::cout << it->first << " = " << it->second << "\n";
 
-    // Strings: keep as-is
+    // Strings
     std::string server_ip = config["server_ip"];
     std::string input_file = config["input_file"];
 
-    // Numbers: safely converted
+    // Numbers
     int server_port = safe_stoi(config["server_port"], 8080);
     int k = safe_stoi(config["k"], 10);
     int p = safe_stoi(config["p"], 2);
