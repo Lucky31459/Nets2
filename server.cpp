@@ -4,8 +4,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
-#include <errno.h>
-#include "json.hpp" 
+#include <errno.h> 
 #include "string.h"
 #include <cctype>
 #include <fstream>
@@ -61,22 +60,16 @@ int safe_stoi(const std::string& s, int default_val=0) {
 
 
 int main(){
-    std::ifstream file("config.json");
-    // if(!file.is_open()){
-    //     cout<<"Could not open the file!"<<endl;
-    //     return 0;
-    // }
-  
+    std::map<std::string,std::string> config = parse_json("config.json");
     char buffer[1024] = {0};
-    nlohmann::json j;
-    file >> j;
+    std::string server_ip = config["server_ip"];
+    std::string input_file = config["input_file"];
 
-    string server_ip = 	j["server_ip"] ;
-    int server_port = j["server_port"] ;
-    int k = j["k"] ;
-    int p = j["p"] ;
-    string input_file = j["input_file"] ;
-    int num_clients = j["num_clients"] ;
+    // Numbers
+    int server_port = safe_stoi(config["server_port"], 8080);
+    int k = safe_stoi(config["k"], 10);
+    int p = safe_stoi(config["p"], 2);
+    int num_clients = safe_stoi(config["num_clients"], 1);
     
     //SET
 
@@ -84,7 +77,7 @@ int main(){
     // int server_port = 8080 ;
     // int k = 10 ;
     // int p = 2 ;
-    string input_file = "./input_543.txt" ;
+    // string input_file = "./input_543.txt" ;
     // int num_clients = 1 ;
 
     //Initialising a server socket (Node)
