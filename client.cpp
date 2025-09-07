@@ -68,8 +68,10 @@ int main(){
    close(sock);
    std::ofstream outfile("output.txt");
 
-   for (const auto& [word, counted] : word_freq) {
-    outfile << word << ", " << counted << "\n";
+   for (const auto& kv : word_freq) {
+       const auto& word = kv.first;
+       const auto& counted = kv.second;
+       outfile << word << ", " << counted << "\n";
    }
 
 
