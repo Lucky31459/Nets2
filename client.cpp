@@ -5,16 +5,64 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
-// #include "json.hpp" 
+
 #include <string>
 #include <cctype>
 #include <fstream>
 #include <sstream>
+
 #include <map>
+#include <algorithm>
+
 #include <cstdlib> 
 using namespace std ;
 
+std::map<std::string, std::string> parse_json(const char* filename) {
+    std::ifstream file(filename);
+    std::map<std::string, std::string> result;
+    std::string line;
+
+    while (std::getline(file, line)) {
+        // Remove spaces at start/end
+        line.erase(0, line.find_first_not_of(" \t\n\r"));
+        line.erase(line.find_last_not_of(" \t\n\r") + 1);
+
+        if (line.empty() || line[0]=='{' || line[0]=='}') continue;
+
+        size_t colon = line.find(':');
+        if (colon == std::string::npos) continue;
+
+        std::string key = line.substr(0, colon);
+        std::string value = line.substr(colon+1);
+
+        // Remove quotes and spaces around key
+        key.erase(0, key.find_first_not_of(" \""));
+        key.erase(key.find_last_not_of(" \"") + 1);
+
+        // Remove quotes and spaces around value
+        value.erase(0, value.find_first_not_of(" \""));
+        value.erase(value.find_last_not_of(" \",") + 1); // also remove trailing comma
+
+        result[key] = value;
+    }
+    return result;
+}
+
+// Safe stoi for numeric values
+int safe_stoi(const std::string& s, int default_val=0) {
+    try {
+        std::string t;
+        for (char c : s) if (isdigit(c) || c=='-' || c=='+') t += c;
+        if (t.empty()) return default_val;
+        return std::stoi(t);
+    } catch (...) {
+        return default_val;
+    }
+}
+
 int main(){
+
+   std::ifstream file("config.json");
    string offset = "10\n" ;
    int k = 10 ;
    int off = atoi(offset.c_str());
