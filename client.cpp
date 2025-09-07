@@ -86,8 +86,8 @@ int main(){
   //  cout<<"yo"<<endl;
     
    const char* offset = std::to_string(off).c_str();
-   send(sock, offset , strlen(offset), 0);
-
+   int sn  = send(sock, offset , strlen(offset), 0);
+   cout<<"C90"<<"sn: "<<sn<<endl;
    bool check = false ;
    std::map<std::string, int> word_freq;
    std::string line, word;
