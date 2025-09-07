@@ -60,7 +60,7 @@ int safe_stoi(const std::string& s, int default_val=0) {
 
 
 int main(){
-    std::map<std::string,std::string> config = parse_json("config_1.json");
+    std::map<std::string,std::string> config = parse_json("config.json");
     char buffer[1024] = {0};
     std::string server_ip_a = config["server_ip"];
     const char* server_ip = 	server_ip_a.c_str() ;
