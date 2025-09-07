@@ -78,7 +78,7 @@ int main(){
    sock = socket(AF_INET, SOCK_STREAM, 0);
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_port = htons(server_port);
-   ipt = inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
+   int ipt = inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
    cout<<"C82"<<" "<<"sock, ipt :"<<sock<<","<<ipt<<endl;
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
