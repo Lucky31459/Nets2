@@ -117,7 +117,7 @@ int main(){
          return 0 ;
     }
     // cout<<num<<endl;
-    std::ifstream infile("./testcase.txt");  
+    std::ifstream infile(input_file);  
     std::string line;
     int word_count = 0;
     string mystr = "";
@@ -126,7 +126,7 @@ int main(){
     while (std::getline(infile, line)) {
         std::stringstream ss(line);
         std::string word;
-        // cout<<"hello"<<endl;
+        cout<<"hello"<<endl;
         while (std::getline(ss, word, ',')) {
             // cout<<word_count<<" "<<num+k<<endl;
             if(word_count == num + k){
