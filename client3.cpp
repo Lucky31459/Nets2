@@ -87,18 +87,12 @@ int main() {
     bool end = false ;
     int word_count = 0 ;
     while (true) {
-        if (iter  > 154 ){
-            
-            break ;
-        }
-        iter++;
-        
-        // memset(buffer, 0, sizeof(buffer));
+       
         int r = read(sock, buffer, sizeof(buffer) - 1);
         if (r > 0) {
             buffer[r] = '\0'; // null terminate
         }
-        cout<<iter<<" "<<off<<" "<<r<<endl;
+        
         
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -142,6 +136,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
