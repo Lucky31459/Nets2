@@ -93,13 +93,13 @@ int main() {
     int count = 0 ;
     int iter = 0 ;
     while (true) {
-        std::cout<<iter<<endl;
+        // std::cout<<iter<<endl;
         if ( iter > 2 ){
             break ;
         }
         iter++;
         read(sock, buffer, 1024);
-        cout<<buffer<<endl;
+        // cout<<buffer<<endl;
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             if (!word.empty() && word.back() ) {
@@ -130,6 +130,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
