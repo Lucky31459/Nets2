@@ -90,8 +90,9 @@ int main() {
             break ;
         }
         iter++;
+       
         read(sock, buffer, 1024);
-        cout<<buffer<<endl;
+        cout<<iter<<" "<<off<<endl;
         
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -123,6 +124,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
