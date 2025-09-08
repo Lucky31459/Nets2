@@ -86,7 +86,7 @@ int main() {
     int iter = 0 ;
     bool end = false ;
     while (!end) {
-        if (iter  > 185 ){
+        if (iter  > 180 ){
             break ;
         }
         iter++;
@@ -126,6 +126,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
