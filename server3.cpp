@@ -98,7 +98,7 @@ int main() {
   
     // char buffer[1024] = {0};
     // read(client_fd, buffer, 1024);
-    std::cout << "Received: " << buffer << std::endl;
+    // std::cout << "Received: " << buffer << std::endl;
     // const char* reply = words[0].c_str() ;
     // send(client_fd, reply, strlen(reply), 0);
 
@@ -107,13 +107,14 @@ int main() {
     std::string mystr = "";
     bool last = false ;
     int iter = 0 ;
+    std::string word ;
     while (true) {
         // std::cout<<"s"<<iter<<endl;
         if ( iter > 10 ){
             break ;
         }
         iter++;
-    
+       
         memset(buffer, 0, sizeof(buffer));
         read(client_fd, buffer, 1024);
         std::stringstream ss(buffer); 
@@ -145,6 +146,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
