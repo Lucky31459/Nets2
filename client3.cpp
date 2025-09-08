@@ -94,7 +94,10 @@ int main() {
         iter++;
         
         // memset(buffer, 0, sizeof(buffer));
-        int r = read(sock, buffer, 1024);
+        int r = read(sock, buffer, sizeof(buffer) - 1);
+        if (r > 0) {
+            buffer[r] = '\0'; // null terminate
+        }
         cout<<iter<<" "<<off<<" "<<r<<endl;
         
         std::stringstream ss(buffer); 
@@ -139,6 +142,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
