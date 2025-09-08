@@ -89,15 +89,15 @@ int main() {
     char buffer[1024] = {0};
     int p , k ;
     int len = words.length();
-    string mystr = "";
+    std::string mystr = "";
     bool last = false ;
     while (true) {
         memset(buffer, 0, sizeof(buffer));
         read(client_fd, buffer, 1024);
         std::stringstream ss(buffer); 
-        std::getline(ss, word, ',')
+        std::getline(ss, word, ',') ;
         p = atoi(word) ;
-        std::getline(ss, word, ',')
+        std::getline(ss, word, ',') ;
         word.pop_back();
         k = atoi(word) ;
 
@@ -122,6 +122,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
