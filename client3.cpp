@@ -85,20 +85,25 @@ int main() {
     int count = 0 ;
     int iter = 0 ;
     bool end = false ;
+    int word_count = 0 ;
     while (!end) {
-        if (iter  > 168 ){
+        if (iter  > 154 ){
+            
             break ;
         }
         iter++;
+        
        
         read(sock, buffer, 1024);
-        cout<<iter<<" "<<off<<endl;
+        // cout<<iter<<" "<<off<<endl;
         
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
+            word_count++ ;
             if (!word.empty() && word.back() == '\n' ) {
                 word.pop_back();
             }
+            cout<<word<<word_count<<endl;
             if(word == "EOF"){
                cout<<"hehe"<<endl;
             end = true ;
@@ -126,6 +131,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
