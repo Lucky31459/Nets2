@@ -93,7 +93,7 @@ int main() {
         }
         iter++;
         
-        memset(buffer, 0, sizeof(buffer));
+        // memset(buffer, 0, sizeof(buffer));
         read(sock, buffer, 1024);
         cout<<iter<<" "<<off<<" "<<buffer<<endl;
         
@@ -139,6 +139,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
