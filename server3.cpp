@@ -87,8 +87,11 @@ int main() {
 
     int addrlen = sizeof(address);
     int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
-    std::cout<<"s"<<endl;
+  
     char buffer[1024] = {0};
+    read(client_fd, buffer, 1024);
+    std::cout << "Received: " << buffer << std::endl;
+    
     int p , k ;
     int len = words.size();
     std::string mystr = "";
@@ -131,6 +134,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
