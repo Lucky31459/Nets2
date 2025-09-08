@@ -98,7 +98,7 @@ int main() {
        
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
-            if (!word.empty() && word.back() =="\n" ) {
+            if (!word.empty() && word.back() == '\n' ) {
                 word.pop_back();
             }
             if(word == "EOF"){
@@ -126,6 +126,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
