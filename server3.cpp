@@ -69,9 +69,14 @@ int main() {
 
     std::ifstream infile(input_file);  
     std::vector<std::string> words;
-    std::string word;
-    while (infile >> word) {
-        words.push_back(word);
+    std::string line;
+
+    while (std::getline(infile, line)) {
+        std::stringstream ss(line);
+        std::string token;
+        while (std::getline(ss, token, ',')) {  // split by comma
+            words.push_back(token);
+        }
     }
     infile.close();
     
@@ -146,6 +151,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
