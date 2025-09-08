@@ -127,9 +127,9 @@ int main() {
               send(sock, sendstr.c_str(), sendstr.size(), 0);
             }  
       }
-       // if (end){
-       //   break ;
-       // }  
+       if (end){
+         break ;
+       }  
     }
     
     close(sock);
@@ -142,6 +142,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
