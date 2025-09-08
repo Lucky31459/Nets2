@@ -94,7 +94,7 @@ int main() {
     int iter = 0 ;
     while (true) {
         std::cout<<iter<<endl;
-        if ( iter > 10 ){
+        if ( iter > 2 ){
             break ;
         }
         iter++;
@@ -130,6 +130,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
