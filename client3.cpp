@@ -1,7 +1,16 @@
+#include <iostream>
+#include <sys/socket.h>
+#include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <iostream>
-#include <cstring>
+#include <string.h>
+#include <errno.h> 
+#include "string.h"
+#include <cctype>
+#include <fstream>
+#include <sstream>
+#include <cstdlib>
+#include <map>
 
 
 std::map<std::string, std::string> parse_json(const char* filename) {
@@ -76,3 +85,4 @@ int main() {
     close(sock);
     return 0;
 }
+
