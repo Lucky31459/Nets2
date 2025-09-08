@@ -91,7 +91,7 @@ int main() {
     
     listen(server_fd, 1);
 
-    std::cout << "Server listening on port " << port << "...\n";
+   
 
     int addrlen = sizeof(address);
     int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
@@ -107,11 +107,11 @@ int main() {
     std::string mystr = "";
     bool last = false ;
     int last_i;
-    cout<<"size :"<<len<<endl;
+
     std::string word ;
     while (true) {
        
-        cout<<p<<endl;
+      
         memset(buffer, 0, sizeof(buffer));
         read(client_fd, buffer, 1024);
         std::stringstream ss(buffer); 
@@ -132,13 +132,13 @@ int main() {
         }
         if (last){
             send(client_fd, mystr.c_str(), mystr.length(), 0);
-            cout<<mystr<<endl;
+          
             break ;
         }
         mystr.pop_back() ;
         mystr = mystr + "\n";
         send(client_fd, mystr.c_str(), mystr.length(), 0);
-        cout<<mystr<<endl;
+       
         mystr = "";
     }
   
@@ -146,6 +146,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
