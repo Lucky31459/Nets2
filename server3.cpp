@@ -106,7 +106,7 @@ int main() {
     int len = words.size();
     std::string mystr = "";
     bool last = false ;
-   
+    cout<<"size :"<<len<<endl;
     std::string word ;
     while (true) {
        
@@ -142,6 +142,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
