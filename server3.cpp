@@ -70,23 +70,6 @@ int main() {
     address.sin_port = htons(port);
 
     bind(server_fd, (sockaddr*)&address, sizeof(address));
-    listen(server_fd, 1);
-
-    // std::cout << "Server listening on port " << port << "...\n";
-
-    int addrlen = sizeof(address);
-    int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
-
-    char buffer[1024] = {0};
-    read(client_fd, buffer, 1024);
-    // std::cout << "Received: " << buffer << std::endl;
-    std::string word;
-    std::stringstream ss(buffer); 
-    std::getline(ss, word, ',')
-    int p = atoi(word) ;
-    std::getline(ss, word, ',')
-    word.pop_back();
-    int k = atoi(word) ;
     // send(client_fd, reply, strlen(reply), 0);
     std::ifstream infile(input_file);  
     std::vector<std::string> words;
@@ -95,12 +78,50 @@ int main() {
         words.push_back(word);
     }
     infile.close();
+    
+    listen(server_fd, 1);
+
+    // std::cout << "Server listening on port " << port << "...\n";
+
+    int addrlen = sizeof(address);
+    int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
+
+    char buffer[1024] = {0};
+    int p , k ;
+    int len = words.length();
+    string mystr = "";
+    bool last = false ;
     while (true) {
         memset(buffer, 0, sizeof(buffer));
+        read(client_fd, buffer, 1024);
+        std::stringstream ss(buffer); 
+        std::getline(ss, word, ',')
+        p = atoi(word) ;
+        std::getline(ss, word, ',')
+        word.pop_back();
+        k = atoi(word) ;
+
+        for (int i = 0 ; i < k ; i++){
+             if ( p+i >= len ){
+                mystr = mystr + "EOF\n"
+                last = true ;
+                break ;
+             }
+             mystr = mystr + word + ",";
+        }
+        if (last){
+           send(client_fd, mystr.c_str(), mystr.length(), 0);
+            break ;
+        }
+        mystr.pop_back() ;
+        mystr = mystr + "\n";
+        send(client_fd, mystr.c_str(), mystr.length(), 0);
+        mystr = "";
     }
     close(client_fd);
     close(server_fd);
     return 0;
 }
+
 
 
