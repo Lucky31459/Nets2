@@ -100,7 +100,7 @@ int main() {
                 word.pop_back();
             }
             if(word == "EOF"){
-            end = false ;
+            end = true ;
               break;
             }
             word_freq[word]++;  
@@ -125,6 +125,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
