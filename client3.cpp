@@ -84,8 +84,12 @@ int main() {
     std::string line, word;
     int count = 0 ;
     int iter = 0 ;
+    
     while (true) {
-       
+        cout<<off<<endl;
+        if(off > 25){
+            break ;
+        }
         read(sock, buffer, 1024);
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -117,6 +121,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
