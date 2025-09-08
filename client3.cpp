@@ -73,13 +73,17 @@ int main() {
     inet_pton(AF_INET, server_ip, &serv_addr.sin_addr);
 
     connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr));
-
-    std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
+    //
     const char* msg = "Hello from client";
     send(sock, msg, strlen(msg), 0);
+    char buffer[1024] = {0};
+    read(sock, buffer, 1024);
+    std::cout << "Server says: " << buffer << std::endl;
+    //
+    std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
     send(sock, sendstr.c_str(), sendstr.size(), 0);
 
-    char buffer[1024] = {0};
+    // char buffer[1024] = {0};
     std::map<std::string, int> word_freq;
     std::string line, word;
     int count = 0 ;
@@ -121,6 +125,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
