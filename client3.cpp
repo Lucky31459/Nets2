@@ -116,9 +116,7 @@ int main() {
                end = true ;
               break;
             }
-            if (end){
-                break ;
-            }
+           
             
             word_freq[word]++;  
             count++;
@@ -129,7 +127,9 @@ int main() {
               send(sock, sendstr.c_str(), sendstr.size(), 0);
             }  
       }
-        
+       if (end){
+         break ;
+       }  
     }
     
     close(sock);
@@ -142,6 +142,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
