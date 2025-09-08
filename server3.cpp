@@ -60,6 +60,7 @@ int safe_stoi(const std::string& s, int default_val=0) {
 int main() {
     std::map<std::string,std::string> config = parse_json("config.json");
     std::string server_ip_a = config["server_ip"];
+    std::string input_file = config["filename"];
     // const char* server_ip = server_ip_a.c_str();
     int port = safe_stoi(config["server_port"], 8080);
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -72,7 +73,7 @@ int main() {
     bind(server_fd, (sockaddr*)&address, sizeof(address));
     // send(client_fd, reply, strlen(reply), 0);
     std::ifstream infile(input_file);  
-    std::vector<std::string> words;
+    vector<std::string> words;
     std::string word;
     while (infile >> word) {
         words.push_back(word);
@@ -96,10 +97,10 @@ int main() {
         read(client_fd, buffer, 1024);
         std::stringstream ss(buffer); 
         std::getline(ss, word, ',') ;
-        p = atoi(word) ;
+        p = safe_stoi(word,1) ;
         std::getline(ss, word, ',') ;
         word.pop_back();
-        k = atoi(word) ;
+        k = safe_stoi(word, 1) ;
 
         for (int i = 0 ; i < k ; i++){
              if ( p+i >= len ){
@@ -122,6 +123,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
