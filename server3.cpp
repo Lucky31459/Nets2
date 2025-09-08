@@ -87,7 +87,7 @@ int main() {
 
     int addrlen = sizeof(address);
     int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
-
+    std::cout<<"s"<<endl;
     char buffer[1024] = {0};
     int p , k ;
     int len = words.size();
@@ -131,6 +131,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
