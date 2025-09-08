@@ -61,10 +61,9 @@ int main() {
     std::map<std::string,std::string> config = parse_json("config.json");
     std::string server_ip_a = config["server_ip"];
     const char* server_ip = server_ip_a.c_str();
-   int port = safe_stoi(config["server_port"], 8080);
-    
-   int off = safe_stoi(config["p"], 2);
-   int k = safe_stoi(config["k"], 10);
+    int port = safe_stoi(config["server_port"], 8080);
+    int off = safe_stoi(config["p"], 2);
+    int k = safe_stoi(config["k"], 10);
 
     int sock = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -75,14 +74,45 @@ int main() {
 
     connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr));
 
-    const char* msg = "Hello from client";
-    send(sock, msg, strlen(msg), 0);
+    std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
+    send(sock, sendstr.c_str(), sendstr.size(), 0);
 
     char buffer[1024] = {0};
-    read(sock, buffer, 1024);
-    std::cout << "Server says: " << buffer << std::endl;
-
+    bool check = false ;
+    std::map<std::string, int> word_freq;
+    std::string line, word;
+    int count = 0 ;
+    while(!check){
+        read(sock, buffer, 1024);
+        std::stringstream ss(buffer); 
+        while (std::getline(ss, word, ',')){
+            if (!word.empty() && word.back() ) {
+                word.pop_back();
+            }
+            if(word == "EOF"){
+              break;
+            }
+            word_freq[word]++;  
+            count++;
+            if(count == k ){
+              count = 0 ;
+              off = off + k ;
+              sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
+              send(sock, sendstr.c_str(), sendstr.size(), 0);
+            }  
+      }
+        
+    }
+    
     close(sock);
+    std::ofstream outfile("output.txt");
+
+   for (const auto& kv : word_freq) {
+       const auto& word = kv.first;
+       const auto& counted = kv.second;
+       cout << word << ", " << counted << "\n";
+   }
     return 0;
 }
+
 
