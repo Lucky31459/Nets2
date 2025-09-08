@@ -78,7 +78,7 @@ int main(){
    sock = socket(AF_INET, SOCK_STREAM, 0);
    serv_addr.sin_family = AF_INET;
    serv_addr.sin_port = htons(server_port);
-   int ipt = inet_pton(AF_INET, server_ip.c_str() , &serv_addr.sin_addr);
+   int ipt = inet_pton(AF_INET, server_ip , &serv_addr.sin_addr);
    cout<<"C82"<<" "<<"sock, ipt :"<<sock<<","<<ipt<<endl;
 
    int con = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
@@ -87,9 +87,11 @@ int main(){
    printf("Connecting to %s:%d\n",
        inet_ntoa(serv_addr.sin_addr),   // IP address in dotted form
        ntohs(serv_addr.sin_port));      // Port in host byte order
-    
-   const char* offset = std::to_string(off).c_str();
-   int sn  = send(sock, offset , strlen(offset), 0);
+
+   std::string offset_str = std::to_string(off);
+   int sn = send(sock, offset_str.c_str(), offset_str.size(), 0);
+   // const char* offset = std::to_string(off).c_str();
+   // int sn  = send(sock, offset , strlen(offset), 0);
    cout<<"C90"<<"sn: "<<sn<<endl;
    bool check = false ;
    std::map<std::string, int> word_freq;
