@@ -78,11 +78,10 @@ int main() {
     send(sock, sendstr.c_str(), sendstr.size(), 0);
 
     char buffer[1024] = {0};
-    bool check = false ;
     std::map<std::string, int> word_freq;
     std::string line, word;
     int count = 0 ;
-    while(!check){
+    while(true){
         read(sock, buffer, 1024);
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -114,5 +113,6 @@ int main() {
    }
     return 0;
 }
+
 
 
