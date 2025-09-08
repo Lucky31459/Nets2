@@ -106,6 +106,7 @@ int main() {
     int len = words.size();
     std::string mystr = "";
     bool last = false ;
+    int last_i;
     cout<<"size :"<<len<<endl;
     std::string word ;
     while (true) {
@@ -124,12 +125,14 @@ int main() {
              if ( p+i >= len ){
                 mystr = mystr + "EOF\n" ;
                 last = true ;
+                last_i = p+i;
                 break ;
              }
              mystr = mystr + words[p+i] + ",";
         }
         if (last){
             send(client_fd, mystr.c_str(), mystr.length(), 0);
+            cout<<last_i<<endl;
             break ;
         }
         mystr.pop_back() ;
@@ -142,6 +145,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
