@@ -88,7 +88,7 @@ int main() {
     std::string line, word;
     int count = 0 ;
     int iter = 0 ;
-    while (true) {
+    while (false) {
         std::cout<<iter<<endl;
         if ( iter > 10 ){
             break ;
@@ -125,6 +125,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
