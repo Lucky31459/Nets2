@@ -95,7 +95,7 @@ int main() {
         
        
         read(sock, buffer, 1024);
-        // cout<<iter<<" "<<off<<endl;
+        cout<<iter<<" "<<off<<" "<<buffer<<endl;
         
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -104,9 +104,9 @@ int main() {
                 
                 word.pop_back();
             }
-            cout<<endl;
-            cout<<word<<endl;
-            cout<<endl;
+            // cout<<endl;
+            // cout<<word<<endl;
+            // cout<<endl;
             
             if(word == "EOF"){
                cout<<"hehe"<<endl;
@@ -139,6 +139,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
