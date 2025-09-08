@@ -73,13 +73,7 @@ int main() {
 
     bind(server_fd, (sockaddr*)&address, sizeof(address));
     // // send(client_fd, reply, strlen(reply), 0);
-    // std::ifstream infile(input_file);  
-    // std::vector<std::string> words;
-    // std::string word;
-    // while (infile >> word) {
-    //     words.push_back(word);
-    // }
-    // infile.close();
+
     
     listen(server_fd, 1);
 
@@ -95,49 +89,56 @@ int main() {
     const char* reply = "Hello from server";
     send(client_fd, reply, strlen(reply), 0);
 
+        std::ifstream infile(input_file);  
+    std::vector<std::string> words;
+    std::string word;
+    while (infile >> word) {
+        words.push_back(word);
+    }
+    infile.close();
+    int p , k ;
+    int len = words.size();
+    std::string mystr = "";
+    bool last = false ;
+    int iter = 0 ;
+    while (false) {
+        std::cout<<"s"<<iter<<endl;
+        if ( iter > 10 ){
+            break ;
+        }
+        iter++;
     
-    // int p , k ;
-    // int len = words.size();
-    // std::string mystr = "";
-    // bool last = false ;
-    // int iter = 0 ;
-    // while (false) {
-    //     std::cout<<"s"<<iter<<endl;
-    //     if ( iter > 10 ){
-    //         break ;
-    //     }
-    //     iter++;
-    
-    //     memset(buffer, 0, sizeof(buffer));
-    //     read(client_fd, buffer, 1024);
-    //     std::stringstream ss(buffer); 
-    //     std::getline(ss, word, ',') ;
-    //     p = safe_stoi(word,1) ;
-    //     std::getline(ss, word, ',') ;
-    //     word.pop_back();
-    //     k = safe_stoi(word, 1) ;
+        memset(buffer, 0, sizeof(buffer));
+        read(client_fd, buffer, 1024);
+        std::stringstream ss(buffer); 
+        std::getline(ss, word, ',') ;
+        p = safe_stoi(word,1) ;
+        std::getline(ss, word, ',') ;
+        word.pop_back();
+        k = safe_stoi(word, 1) ;
 
-    //     for (int i = 0 ; i < k ; i++){
-    //          if ( p+i >= len ){
-    //             mystr = mystr + "EOF\n" ;
-    //             last = true ;
-    //             break ;
-    //          }
-    //          mystr = mystr + word + ",";
-    //     }
-    //     if (last){
-    //        send(client_fd, mystr.c_str(), mystr.length(), 0);
-    //         break ;
-    //     }
-    //     mystr.pop_back() ;
-    //     mystr = mystr + "\n";
-    //     send(client_fd, mystr.c_str(), mystr.length(), 0);
-    //     mystr = "";
-    // }
+        for (int i = 0 ; i < k ; i++){
+             if ( p+i >= len ){
+                mystr = mystr + "EOF\n" ;
+                last = true ;
+                break ;
+             }
+             mystr = mystr + word + ",";
+        }
+        if (last){
+           send(client_fd, mystr.c_str(), mystr.length(), 0);
+            break ;
+        }
+        mystr.pop_back() ;
+        mystr = mystr + "\n";
+        send(client_fd, mystr.c_str(), mystr.length(), 0);
+        mystr = "";
+    }
     close(client_fd);
     close(server_fd);
     return 0;
 }
+
 
 
 
