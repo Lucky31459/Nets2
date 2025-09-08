@@ -106,7 +106,7 @@ int main() {
             // cout<<endl;
             
             if(word == "EOF"){
-               cout<<"yo"<<endl;
+               // cout<<"yo"<<endl;
                end = true ;
               break;
             }
@@ -136,6 +136,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
