@@ -73,7 +73,7 @@ int main() {
     bind(server_fd, (sockaddr*)&address, sizeof(address));
     // send(client_fd, reply, strlen(reply), 0);
     std::ifstream infile(input_file);  
-    vector<std::string> words;
+    std::vector<std::string> words;
     std::string word;
     while (infile >> word) {
         words.push_back(word);
@@ -123,6 +123,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
