@@ -11,7 +11,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <map>
-
+#include <vector>
 
 std::map<std::string, std::string> parse_json(const char* filename) {
     std::ifstream file(filename);
@@ -104,7 +104,7 @@ int main() {
 
         for (int i = 0 ; i < k ; i++){
              if ( p+i >= len ){
-                mystr = mystr + "EOF\n"
+                mystr = mystr + "EOF\n" ;
                 last = true ;
                 break ;
              }
@@ -123,6 +123,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
