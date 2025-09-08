@@ -94,8 +94,8 @@ int main() {
         iter++;
         
         // memset(buffer, 0, sizeof(buffer));
-        read(sock, buffer, 1024);
-        cout<<iter<<" "<<off<<" "<<buffer<<endl;
+        int r = read(sock, buffer, 1024);
+        cout<<iter<<" "<<off<<" "<<r<<endl;
         
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -139,6 +139,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
