@@ -109,10 +109,11 @@ int main() {
    for (const auto& kv : word_freq) {
        const auto& word = kv.first;
        const auto& counted = kv.second;
-       cout << word << ", " << counted << "\n";
+       std::cout << word << ", " << counted << "\n";
    }
     return 0;
 }
+
 
 
 
