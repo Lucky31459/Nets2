@@ -96,11 +96,11 @@ int main() {
     int addrlen = sizeof(address);
     int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
   
-    char buffer[1024] = {0};
-    read(client_fd, buffer, 1024);
+    // char buffer[1024] = {0};
+    // read(client_fd, buffer, 1024);
     std::cout << "Received: " << buffer << std::endl;
-    const char* reply = words[0].c_str() ;
-    send(client_fd, reply, strlen(reply), 0);
+    // const char* reply = words[0].c_str() ;
+    // send(client_fd, reply, strlen(reply), 0);
 
     int p , k ;
     int len = words.size();
@@ -108,7 +108,7 @@ int main() {
     bool last = false ;
     int iter = 0 ;
     while (true) {
-        std::cout<<"s"<<iter<<endl;
+        // std::cout<<"s"<<iter<<endl;
         if ( iter > 10 ){
             break ;
         }
@@ -122,7 +122,7 @@ int main() {
         std::getline(ss, word, ',') ;
         word.pop_back();
         k = safe_stoi(word, 1) ;
-
+        cout<<p<<" "<<k<<endl;
         for (int i = 0 ; i < k ; i++){
              if ( p+i >= len ){
                 mystr = mystr + "EOF\n" ;
@@ -145,6 +145,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
