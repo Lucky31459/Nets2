@@ -81,7 +81,13 @@ int main() {
     std::map<std::string, int> word_freq;
     std::string line, word;
     int count = 0 ;
-    while(true){
+    int iter = 0 ;
+    while (true) {
+        std::cout<<iter<<endl;
+        if ( iter > 10 ){
+            break ;
+        }
+        iter++;
         read(sock, buffer, 1024);
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
@@ -113,6 +119,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
