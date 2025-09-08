@@ -100,7 +100,7 @@ int main() {
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             word_count++ ;
-            if (!word.empty() && word.back() == '\n' ) {
+            if ( word.back() == '\n' ) {
                 cout<<word<<word_count<<endl;
                 word.pop_back();
             }
@@ -136,6 +136,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
