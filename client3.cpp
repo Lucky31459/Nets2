@@ -77,25 +77,23 @@ int main() {
     std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
     send(sock, sendstr.c_str(), sendstr.size(), 0);
     char buffer[1024] = {0};
-    read(sock, buffer, 1024);
-    std::cout << "Server says: " << buffer << std::endl;
-    //
-    // std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
-    // send(sock, sendstr.c_str(), sendstr.size(), 0);
+    // read(sock, buffer, 1024);
+    // std::cout << "Server says: " << buffer << std::endl;
 
-    // char buffer[1024] = {0};
     std::map<std::string, int> word_freq;
     std::string line, word;
     int count = 0 ;
     int iter = 0 ;
     while (true) {
-        // std::cout<<iter<<endl;
-        if ( iter > 2 ){
+        if (iter % 7 == 6){
+            std::cout<<iter<<endl;
+        }
+        if ( iter > 20 ){
             break ;
         }
         iter++;
         read(sock, buffer, 1024);
-        // cout<<buffer<<endl;
+        cout<<buffer<<endl;
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             if (!word.empty() && word.back() ) {
@@ -126,6 +124,7 @@ int main() {
    // }
     return 0;
 }
+
 
 
 
