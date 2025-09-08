@@ -94,12 +94,13 @@ int main() {
     char buffer[1024] = {0};
     read(client_fd, buffer, 1024);
     std::cout << "Received: " << buffer << std::endl;
-     cout<<S100<<endl;
-     cout<<S100<<endl;
-     cout<<S100<<endl;
-     cout<<S100<<endl;
+     cout<<"S97"<<endl;
+     cout<<"S98"<<endl;
+     cout<<"S99"<<endl;
+     cout<<"S100"<<endl;
     const char* reply = "Hello from server";
     send(client_fd, reply, strlen(reply), 0);
+     cout<<"S103"<<endl;
    
    
     int p , k ;
@@ -144,6 +145,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
