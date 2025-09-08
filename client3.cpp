@@ -104,7 +104,9 @@ int main() {
                 
                 word.pop_back();
             }
-            cout<<word<<word_count<<endl;
+            cout<<endl;
+            cout<<word<<endl;
+            cout<<endl;
             
             if(word == "EOF"){
                cout<<"hehe"<<endl;
@@ -137,6 +139,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
