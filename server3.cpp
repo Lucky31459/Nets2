@@ -130,7 +130,7 @@ int main() {
                 last = true ;
                 break ;
              }
-             mystr = mystr + word[p+i] + ",";
+             mystr = mystr + words[p+i] + ",";
         }
         if (last){
            send(client_fd, mystr.c_str(), mystr.length(), 0);
@@ -146,6 +146,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
