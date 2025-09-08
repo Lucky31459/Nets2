@@ -95,7 +95,7 @@ int main() {
     bool last = false ;
     int iter = 0 ;
     while (true) {
-        std::cout<<iter<<endl;
+        std::cout<<"s"<<iter<<endl;
         if ( iter > 10 ){
             break ;
         }
@@ -131,6 +131,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
