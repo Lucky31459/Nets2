@@ -89,7 +89,7 @@ int main() {
 
     char buffer[1024] = {0};
     int p , k ;
-    int len = words.length();
+    int len = words.size();
     std::string mystr = "";
     bool last = false ;
     while (true) {
@@ -123,6 +123,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
