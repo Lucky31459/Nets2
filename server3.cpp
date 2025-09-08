@@ -132,12 +132,13 @@ int main() {
         }
         if (last){
             send(client_fd, mystr.c_str(), mystr.length(), 0);
-            cout<<last_i<<mystr<<endl;
+            cout<<mystr<<endl;
             break ;
         }
         mystr.pop_back() ;
         mystr = mystr + "\n";
         send(client_fd, mystr.c_str(), mystr.length(), 0);
+        cout<<mystr<<endl;
         mystr = "";
     }
   
@@ -145,6 +146,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
