@@ -106,14 +106,10 @@ int main() {
     int len = words.size();
     std::string mystr = "";
     bool last = false ;
-    int iter = 0 ;
+   
     std::string word ;
     while (true) {
-        // std::cout<<"s"<<iter<<endl;
-        if ( iter > 10 ){
-            break ;
-        }
-        iter++;
+       
        
         memset(buffer, 0, sizeof(buffer));
         read(client_fd, buffer, 1024);
@@ -146,6 +142,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
