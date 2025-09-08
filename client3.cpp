@@ -109,7 +109,7 @@ int main() {
             // cout<<endl;
             
             if(word == "EOF"){
-               cout<<"hehe"<<endl;
+               cout<<"yo"<<endl;
                end = true ;
               break;
             }
@@ -139,6 +139,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
