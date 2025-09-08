@@ -77,9 +77,9 @@ int main() {
 
 
 
-    const char* msg = "Hello from client";
-    send(sock, msg, strlen(msg), 0);
-        std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
+    // const char* msg = "Hello from client";
+    // send(sock, msg, strlen(msg), 0);
+    std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
     send(sock, sendstr.c_str(), sendstr.size(), 0);
     char buffer[1024] = {0};
     read(sock, buffer, 1024);
@@ -131,6 +131,7 @@ int main() {
    // }
     return 0;
 }
+
 
 
 
