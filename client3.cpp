@@ -101,9 +101,10 @@ int main() {
         while (std::getline(ss, word, ',')){
             word_count++ ;
             if ( !word.empty() && word.back() == '\n' ) {
-                cout<<word<<word_count<<endl;
+                
                 word.pop_back();
             }
+            cout<<word<<word_count<<endl;
             
             if(word == "EOF"){
                cout<<"hehe"<<endl;
@@ -136,6 +137,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
