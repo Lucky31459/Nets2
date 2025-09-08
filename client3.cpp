@@ -84,8 +84,8 @@ int main() {
     std::string line, word;
     int count = 0 ;
     int iter = 0 ;
-    
-    while (true) {
+    bool end = false ;
+    while (end) {
         if (iter  > 200 ){
             break ;
         }
@@ -100,6 +100,7 @@ int main() {
                 word.pop_back();
             }
             if(word == "EOF"){
+            end = false ;
               break;
             }
             word_freq[word]++;  
@@ -124,6 +125,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
