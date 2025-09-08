@@ -141,10 +141,12 @@ int main() {
         send(client_fd, mystr.c_str(), mystr.length(), 0);
         mystr = "";
     }
+    cout<<"HI"<<endl;
     close(client_fd);
     close(server_fd);
     return 0;
 }
+
 
 
 
