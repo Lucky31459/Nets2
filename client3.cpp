@@ -86,11 +86,13 @@ int main() {
     int iter = 0 ;
     
     while (true) {
-        cout<<off<<endl;
-        if(off > 25){
+        if (iter  > 5 ){
             break ;
         }
+        iter++;
         read(sock, buffer, 1024);
+        cout<<buffer<<endl;
+        
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             if (!word.empty() && word.back() == '\n' ) {
@@ -121,6 +123,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
