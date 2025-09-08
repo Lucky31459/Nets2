@@ -86,7 +86,7 @@ int main() {
     int iter = 0 ;
     bool end = false ;
     int word_count = 0 ;
-    while (!end) {
+    while (true) {
         if (iter  > 154 ){
             
             break ;
@@ -101,14 +101,19 @@ int main() {
         while (std::getline(ss, word, ',')){
             word_count++ ;
             if (!word.empty() && word.back() == '\n' ) {
+                cout<<word<<word_count<<endl;
                 word.pop_back();
             }
-            cout<<word<<word_count<<endl;
+            
             if(word == "EOF"){
                cout<<"hehe"<<endl;
-            end = true ;
+               end = true ;
               break;
             }
+            if (end){
+                break ;
+            }
+            
             word_freq[word]++;  
             count++;
             if(count == k ){
@@ -131,6 +136,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
