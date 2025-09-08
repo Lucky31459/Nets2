@@ -86,7 +86,7 @@ int main() {
     int iter = 0 ;
     bool end = false ;
     while (!end) {
-        if (iter  > 180 ){
+        if (iter  > 168 ){
             break ;
         }
         iter++;
@@ -100,7 +100,7 @@ int main() {
                 word.pop_back();
             }
             if(word == "EOF"){
-                cout<<word<<endl;
+               cout<<"hehe"<<endl;
             end = true ;
               break;
             }
@@ -126,6 +126,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
