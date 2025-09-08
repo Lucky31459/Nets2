@@ -95,6 +95,7 @@ int main() {
         }
         iter++;
         read(sock, buffer, 1024);
+        cout<<buffer<<endl;
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             if (!word.empty() && word.back() ) {
@@ -125,6 +126,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
