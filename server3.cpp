@@ -97,7 +97,7 @@ int main() {
 
     const char* reply = "Hello from server";
     send(client_fd, reply, strlen(reply), 0);
-
+    cout<<S100<<endl;
    
     int p , k ;
     int len = words.size();
@@ -141,6 +141,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
