@@ -73,12 +73,7 @@ int main() {
     inet_pton(AF_INET, server_ip, &serv_addr.sin_addr);
 
     connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr));
-    //
-
-
-
-    // const char* msg = "Hello from client";
-    // send(sock, msg, strlen(msg), 0);
+ 
     std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
     send(sock, sendstr.c_str(), sendstr.size(), 0);
     char buffer[1024] = {0};
@@ -131,6 +126,7 @@ int main() {
    // }
     return 0;
 }
+
 
 
 
