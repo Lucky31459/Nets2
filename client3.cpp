@@ -85,18 +85,20 @@ int main() {
     int count = 0 ;
     int iter = 0 ;
     while (true) {
-        if (iter % 7 == 6){
+       
+        read(sock, buffer, 1024);
+         if (iter % 7 == 6){
             std::cout<<iter<<endl;
+              cout<<buffer<<endl;
         }
         if ( iter > 20 ){
             break ;
         }
         iter++;
-        read(sock, buffer, 1024);
-        cout<<buffer<<endl;
+       
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
-            if (!word.empty() && word.back() ) {
+            if (!word.empty() && word.back() =="\n" ) {
                 word.pop_back();
             }
             if(word == "EOF"){
@@ -117,13 +119,14 @@ int main() {
     close(sock);
     std::ofstream outfile("output.txt");
 
-   // for (const auto& kv : word_freq) {
-   //     const auto& word = kv.first;
-   //     const auto& counted = kv.second;
-   //     std::cout << word << ", " << counted << "\n";
-   // }
+   for (const auto& kv : word_freq) {
+       const auto& word = kv.first;
+       const auto& counted = kv.second;
+       std::cout << word << ", " << counted << "\n";
+   }
     return 0;
 }
+
 
 
 
