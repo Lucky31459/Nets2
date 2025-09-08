@@ -59,6 +59,13 @@ int safe_stoi(const std::string& s, int default_val=0) {
 
 
 int main() {
+    std::ifstream infile(input_file);  
+    std::vector<std::string> words;
+    std::string word;
+    while (infile >> word) {
+        words.push_back(word);
+    }
+    infile.close();
     std::map<std::string,std::string> config = parse_json("config.json");
     std::string server_ip_a = config["server_ip"];
     std::string input_file = config["filename"];
@@ -89,13 +96,7 @@ int main() {
     const char* reply = "Hello from server";
     send(client_fd, reply, strlen(reply), 0);
 
-        std::ifstream infile(input_file);  
-    std::vector<std::string> words;
-    std::string word;
-    while (infile >> word) {
-        words.push_back(word);
-    }
-    infile.close();
+   
     int p , k ;
     int len = words.size();
     std::string mystr = "";
@@ -138,6 +139,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
