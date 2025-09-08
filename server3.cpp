@@ -83,7 +83,7 @@ int main() {
     
     listen(server_fd, 1);
 
-    // std::cout << "Server listening on port " << port << "...\n";
+    std::cout << "Server listening on port " << port << "...\n";
 
     int addrlen = sizeof(address);
     int client_fd = accept(server_fd, (sockaddr*)&address, (socklen_t*)&addrlen);
@@ -131,6 +131,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
