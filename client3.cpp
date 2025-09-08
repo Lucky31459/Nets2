@@ -85,7 +85,7 @@ int main() {
     int count = 0 ;
     int iter = 0 ;
     bool end = false ;
-    while (end) {
+    while (!end) {
         if (iter  > 200 ){
             break ;
         }
@@ -125,6 +125,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
