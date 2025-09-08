@@ -98,7 +98,7 @@ int main() {
      cout<<"S98"<<endl;
      cout<<"S99"<<endl;
      cout<<"S100"<<endl;
-    const char* reply = words[0];
+    const char* reply = words[0].c_str() ;
     send(client_fd, reply, strlen(reply), 0);
     cout<<"S103"<<endl;
    
@@ -146,6 +146,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
