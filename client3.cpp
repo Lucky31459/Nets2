@@ -75,6 +75,8 @@ int main() {
     connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr));
 
     std::string sendstr = std::to_string(off) + "," + std::to_string(k) + "\n"; 
+    const char* msg = "Hello from client";
+    send(sock, msg, strlen(msg), 0);
     send(sock, sendstr.c_str(), sendstr.size(), 0);
 
     char buffer[1024] = {0};
@@ -119,6 +121,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
