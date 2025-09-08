@@ -110,7 +110,7 @@ int main() {
     std::string word ;
     while (true) {
        
-       
+        cout<<p<<endl;
         memset(buffer, 0, sizeof(buffer));
         read(client_fd, buffer, 1024);
         std::stringstream ss(buffer); 
@@ -119,7 +119,7 @@ int main() {
         std::getline(ss, word, ',') ;
         word.pop_back();
         k = safe_stoi(word, 1) ;
-        cout<<p<<" "<<k<<endl;
+        
         for (int i = 0 ; i < k ; i++){
              if ( p+i >= len ){
                 mystr = mystr + "EOF\n" ;
