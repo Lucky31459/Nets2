@@ -87,15 +87,6 @@ int main() {
     while (true) {
        
         read(sock, buffer, 1024);
-         if (iter % 7 == 6){
-            std::cout<<iter<<endl;
-              cout<<buffer<<endl;
-        }
-        if ( iter > 20 ){
-            break ;
-        }
-        iter++;
-       
         std::stringstream ss(buffer); 
         while (std::getline(ss, word, ',')){
             if (!word.empty() && word.back() == '\n' ) {
@@ -126,6 +117,7 @@ int main() {
    }
     return 0;
 }
+
 
 
 
