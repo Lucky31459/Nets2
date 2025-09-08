@@ -97,7 +97,7 @@ int main() {
     std::string mystr = "";
     bool last = false ;
     int iter = 0 ;
-    while (true) {
+    while (false) {
         std::cout<<"s"<<iter<<endl;
         if ( iter > 10 ){
             break ;
@@ -134,6 +134,7 @@ int main() {
     close(server_fd);
     return 0;
 }
+
 
 
 
