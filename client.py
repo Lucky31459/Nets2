@@ -1,10 +1,23 @@
 import socket
 import time
-import json
 
-with open("config.json") as f:
-    config = json.load(f)
+def parse_config(filename):
+    config = {}
+    with open(filename, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("{") or line.startswith("}"):
+                continue
+            if ":" in line:
+                key, value = line.split(":", 1)
+                key = key.strip().strip('"')
+                value = value.strip().strip(",").strip('"')
+                if value.isdigit():
+                    value = int(value)
+                config[key] = value
+    return config
 
+config = parse_config("config.json")
 server_ip = config["server_ip"]
 port = config["port"]
 
